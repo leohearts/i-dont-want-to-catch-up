@@ -25,6 +25,25 @@ This module declines the trophy. It also does one small honest thing: the icon i
 icon of the notification history button, because tapping that area is what actually opens
 notification history. The picture finally matches the button.
 
+
+## Requirements
+
+- Android 17 — that is where the trophy exists
+- Root, with Magisk — the overlay has to be preinstalled, see [Notes](#notes)
+- `adb` for the install below, or just use the Magisk app
+
+## Install
+
+Download, install in Magisk / Apatch / KernelSU or anything else.
+
+or:
+
+```sh
+adb push build/i-dont-want-to-catch-up.zip /data/local/tmp/
+adb shell su -c 'magisk --install-module /data/local/tmp/i-dont-want-to-catch-up.zip'
+adb reboot
+```
+
 ## What it changes
 
 One static RRO for `com.android.systemui`. Two resources, no code, no services, nothing running in
@@ -42,19 +61,6 @@ drawable is a plain monochrome vector, and the shade's own `ImageView` tints it 
 the framework's `materialColorOnSurface`. Light, dark and wallpaper-based dynamic colour all follow
 along for free.
 
-## Requirements
-
-- Android 17 — that is where the trophy exists
-- Root, with Magisk — the overlay has to be preinstalled, see [Notes](#notes)
-- `adb` for the install below, or just use the Magisk app
-
-## Install
-
-```sh
-adb push build/i-dont-want-to-catch-up.zip /data/local/tmp/
-adb shell su -c 'magisk --install-module /data/local/tmp/i-dont-want-to-catch-up.zip'
-adb reboot
-```
 
 Then confirm it landed:
 
@@ -87,48 +93,14 @@ with `~/.android/debug.keystore`. Override with `KS`, `KS_PASS`, `KEY_ALIAS`, `K
 
 ## Uninstall
 
+In your superuser app.
+
+or:
+
 ```sh
 adb shell su -c 'rm -rf /data/adb/modules/i-dont-want-to-catch-up'
 adb reboot
 ```
-
-## Notes
-
-- **There is no setting for this.** The feature sits behind the aconfig flag
-  `com.android.systemui.show_icon_in_empty_shade`, which is `read-only` in release builds:
-
-  ```console
-  $ adb shell su -c 'aflags disable com.android.systemui.show_icon_in_empty_shade'
-  Error: could not write flag 'com.android.systemui.show_icon_in_empty_shade',
-  it is read-only for the current release configuration.
-  ```
-
-  No toggle. Presumably because a toggle would let you opt out of the encouragement.
-
-- **Why a Magisk module instead of a normal install.** A plain `adb install` of this overlay is
-  rejected at scan time:
-
-  ```
-  Overlay io.github.leohearts.idontwanttocatchup and target com.android.systemui signed with
-  different certificates, and the overlay lacks <overlay android:targetName>
-  ```
-
-  Preinstalled overlays are exempt from that check, which is why the APK ships inside a Magisk
-  module under `system/product/overlay/`. There is also no `targetName` to point at, because
-  SystemUI declares no overlayables at all.
-
-- **Do not put an empty `<vector>` in an overlay.** A `<vector>` without a `<path>` makes
-  `VectorDrawable.inflateChildElements` throw `no path defined`, which arrives as
-  `Resources$NotFoundException` while inflating the shade layout. SystemUI inflates that layout
-  early, so the result is a crash loop instead of a phone. Ask me how I know.
-
-- **Do not add a tint attribute to the icon.** `?attr/colorControlNormal` inside an overlay resolves
-  against the overlay package, not the target, and `aapt2` refuses to link it. SystemUI already
-  tints this `ImageView`; let it.
-
-- Verified on LineageOS 24.0 (Android 17, SDK 37) on a OnePlus 9RT, with the empty shade rendering
-  the icon above `No notifications`.
-
 ## Credits
 
 - Icon path data: AOSP SystemUI `packages/SystemUI/res/drawable/notif_footer_btn_history.xml`
