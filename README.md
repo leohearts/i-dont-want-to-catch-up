@@ -4,6 +4,19 @@
 
 ![An empty notification shade reading "No notifications" under a clock-arrow icon](docs/after.png)
 
+<details><summary>Wanna see the trophy? Take it! 🏆</summary>
+  <table>
+    <tr>
+      <th><img width="30%"  alt="Before (with the trophy)" src="https://github.com/user-attachments/assets/47cb8229-c5e8-4ed5-8efc-145192c601a9" /></th>
+      <th><img width="30%"  alt="After" src="https://github.com/user-attachments/assets/b42f37f5-657a-4613-93f5-3393763e54b8" /></th>
+    </tr>
+    <tr>
+      <td>Do you like it?</td>
+      <td>let's send it back.</td>
+    </tr>
+  </table>
+</details>
+
 ## The pitch
 
 Somewhere in Mountain View, someone looked at an empty notification shade — the calmest screen a
