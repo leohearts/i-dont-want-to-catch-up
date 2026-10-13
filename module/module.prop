@@ -1,0 +1,6 @@
+id=i-dont-want-to-catch-up
+name=I Don't Want To Catch Up
+version=1.0.0
+versionCode=1
+author=Leohearts
+description=Android 17 empty notification shade: drops the trophy and "You're all caught up" for the notification history icon and "No notifications". Tapping still opens notification history.

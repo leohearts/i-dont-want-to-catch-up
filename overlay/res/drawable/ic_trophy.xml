@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Stand-in for com.android.systemui:drawable/ic_trophy, the icon of the Android 17
+  empty-shade trophy.
+
+  Path data copied from AOSP SystemUI res/drawable/notif_footer_btn_history.xml
+  (Apache-2.0), so the empty shade shows the icon of the thing that area actually
+  opens: notification history.
+
+  Deliberately monochrome. The shade's ImageView tints this drawable with
+  color/materialColorOnSurface and EmptyShadeIconView.setContentColor() re-applies
+  the framework's materialColorOnSurface, both of which have night variants, so the
+  colour follows light/dark and wallpaper-based theming on its own. Do not add a
+  tint attribute here: ?attr/... resolves against the overlay package, not the
+  target, and aapt2 refuses to link it.
+
+  It must keep at least one <path>. A <vector> with no <path> throws
+  "no path defined" from VectorDrawable, which crashes the layout that inflates it.
+-->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="20dp"
+    android:height="20dp"
+    android:viewportWidth="960"
+    android:viewportHeight="960">
+  <path
+      android:fillColor="@android:color/white"
+      android:pathData="M480,840Q342,840 239.5,748.5Q137,657 122,520L204,520Q218,624 296.5,692Q375,760 480,760Q597,760 678.5,678.5Q760,597 760,480Q760,363 678.5,281.5Q597,200 480,200Q411,200 351,232Q291,264 250,320L360,320L360,400L120,400L120,160L200,160L200,254Q251,190 324.5,155Q398,120 480,120Q555,120 620.5,148.5Q686,177 734.5,225.5Q783,274 811.5,339.5Q840,405 840,480Q840,555 811.5,620.5Q783,686 734.5,734.5Q686,783 620.5,811.5Q555,840 480,840ZM592,648L440,496L440,280L520,280L520,464L648,592L592,648Z"/>
+</vector>

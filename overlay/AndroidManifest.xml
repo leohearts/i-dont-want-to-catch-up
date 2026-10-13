@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="io.github.leohearts.idontwanttocatchup">
+
+    <!-- Static overlay for SystemUI: no code, no services, two resources. -->
+    <overlay
+        android:targetPackage="com.android.systemui"
+        android:priority="1500"
+        android:isStatic="true" />
+
+    <application android:hasCode="false" />
+</manifest>

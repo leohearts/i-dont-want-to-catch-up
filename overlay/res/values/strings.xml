@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--
+      Shown in the notification shade when there is nothing to show.
+
+      Android 17 uses "You're all caught up" here. Set this to an empty string if
+      you would rather the shade say nothing at all.
+    -->
+    <string name="caught_up_shade_text">No notifications</string>
+</resources>
