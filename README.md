@@ -38,7 +38,7 @@ This module declines the trophy. It also does one small honest thing: the icon i
 icon of the notification history button, because tapping that area is what actually opens
 notification history. The picture finally matches the button.
 
-* You can still click the icon to view the notification history.
+\* You can still click the icon to view the notification history.
 
 
 ## Requirements
