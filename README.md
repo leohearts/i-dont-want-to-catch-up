@@ -44,12 +44,12 @@ notification history. The picture finally matches the button.
 ## Requirements
 
 - Android 17 — that is where the trophy exists
-- Root, with Magisk — the overlay has to be preinstalled, see [Notes](#notes)
+- Root, with Magisk / Apatch / KernelSU or anything else with modules support
 - `adb` for the install below, or just use the Magisk app
 
 ## Install
 
-Download, install in Magisk / Apatch / KernelSU or anything else.
+Download, install in your superuser app
 
 or:
 
